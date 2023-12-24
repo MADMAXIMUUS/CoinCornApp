@@ -1,8 +1,13 @@
 package ru.coincorn.app.ui.theme
 
+import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import io.github.madmaximuus.persian.foundation.PersianTheme
 import io.github.madmaximuus.persian.foundation.darkColorScheme
 import io.github.madmaximuus.persian.foundation.lightColorScheme
@@ -75,6 +80,20 @@ fun CoinCornTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        val currentWindow = (view.context as? Activity)?.window
+            ?: throw Exception("Not in an activity - unable to get Window reference")
+        SideEffect {
+            currentWindow.statusBarColor = Color.Transparent.toArgb()
+            currentWindow.navigationBarColor = Color.Transparent.toArgb()
+            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars =
+                !darkTheme
+            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightNavigationBars =
+                !darkTheme
+        }
+    }
+
     PersianTheme(
         dynamicColor = dynamicColor,
         lightColors = LightColorScheme,

@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -10,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.coincorn.app"
-        minSdk = 28
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
@@ -46,6 +48,11 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "okhttp3/"
+            excludes += "kotlin/"
+            excludes += "org/"
+            excludes += ".properties"
+            excludes += ".bin"
         }
     }
 }
@@ -53,19 +60,35 @@ android {
 dependencies {
 
     implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
+    implementation(libs.material3)
+    implementation(libs.persian)
+    implementation(libs.splash)
+
+    api(libs.compose.foundation)
+    api(libs.compose.foundation.layout)
+
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-    implementation(libs.persian)
+
+    implementation(libs.glide)
+
+    implementation(libs.datastore)
+    implementation(libs.collection.immutable)
+    implementation(libs.serialization)
+
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.navigation)
+
+    implementation(libs.bundles.retrofit)
+    implementation(libs.bundles.lifecycle)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

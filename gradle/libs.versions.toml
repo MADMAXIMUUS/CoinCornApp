@@ -1,33 +1,93 @@
 [versions]
-agp = "8.2.0"
-kotlin = "1.9.0"
 core-ktx = "1.12.0"
+navigation = "2.7.6"
+compose = "1.5.4"
+lifecycle = "2.6.2"
+activity-compose = "1.8.2"
+material = "1.1.2"
+datastore = "1.0.0"
+collection-immutable = "0.3.7"
+glide = "1.0.0-beta01"
+splash = "1.0.1"
+hilt = "2.50"
+hilt-compiler = "1.1.0"
+hilt-navigation = "1.1.0"
+hilt-plugin = "2.47"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
-lifecycle-runtime-ktx = "2.6.2"
-activity-compose = "1.8.2"
-compose-bom = "2023.10.01"
+retrofit = "2.9.0"
+okhttp = "5.0.0-alpha.12"
+retrofit-converter = "2.9.0"
+logging = "5.0.0-alpha.12"
+serialization = "1.9.22"
 persian = "3.0.0"
+agp = "8.2.0"
+kotlin = "1.9.20"
+ksp = "1.9.21-1.0.16"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material" }
+
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose" }
+compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "compose" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "compose" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
+ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
+
+datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+collection-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "collection-immutable" }
+serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "serialization" }
+
+glide = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glide" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit-converter" }
+logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging" }
+
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-compiler" }
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation" }
+
+persian = { group = "io.github.madmaximuus.persian", name = "persian", version.ref = "persian" }
+splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
-ui = { group = "androidx.compose.ui", name = "ui" }
-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-material3 = { group = "androidx.compose.material3", name = "material3" }
-persian = { group = "io.github.madmaximuus.persian", name = "persian", version.ref = "persian" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-plugin" }
 
+
+[bundles]
+retrofit = [
+    "retrofit",
+    "okhttp",
+    "retrofit-converter",
+    "logging"
+]
+
+lifecycle = [
+    "lifecycle-runtime-ktx",
+    "lifecycle-runtime-compose",
+    "lifecycle-viewmodel-compose",
+    "lifecycle-viewmodel-savedstate"
+]

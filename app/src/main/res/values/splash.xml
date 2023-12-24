@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Splash.v26.Theme.CoinCorn" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img_splash</item>
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme.CoinCorn</item>
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Base.Theme.Splash.CoinCorn" parent="Base.Splash.v26.Theme.CoinCorn" />
+
+    <style name="Theme.Splash.CoinCorn" parent="Base.Theme.Splash.CoinCorn" />
+
+</resources>
