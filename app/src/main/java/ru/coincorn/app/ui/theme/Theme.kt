@@ -85,7 +85,7 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun CoinCornTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current

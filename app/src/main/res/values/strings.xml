@@ -8,4 +8,8 @@
     <string name="intro_page_text_3">Never miss a bill payment or savings contribution</string>
     <string name="skip">Skip</string>
     <string name="next">Next</string>
+    <string name="welcome_title">Welcome to CoinCorn</string>
+    <string name="welcome_text">Let’s get started</string>
+    <string name="welcome_sign_up_button_label">Sign Up</string>
+    <string name="welcome_sign_in_button_label">Sign In</string>
 </resources>

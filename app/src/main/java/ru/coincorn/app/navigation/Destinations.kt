@@ -13,13 +13,17 @@ sealed class Destination(protected val route: String, vararg params: String) {
         override operator fun invoke(): String = route
     }
 
-    data object Root: NoArgumentsDestination("root")
+    data object Root : NoArgumentsDestination("root")
 
     data object Intro : NoArgumentsDestination("intro")
 
     data object AuthFlow : NoArgumentsDestination("auth_flow")
 
     data object Welcome : NoArgumentsDestination("welcome")
+
+    data object SignUp : NoArgumentsDestination("sign_up")
+
+    data object SignIn : NoArgumentsDestination("sign_in")
 
     data object MainFlow : NoArgumentsDestination("main_flow")
 }

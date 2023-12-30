@@ -20,6 +20,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
+import ru.coincorn.app.featureAuth.flow.AuthFlow
 import ru.coincorn.app.featureIntro.presentation.IntroRoute
 import ru.coincorn.app.navigation.Destination
 import ru.coincorn.app.navigation.NavigationEffects
@@ -58,8 +59,8 @@ fun CoinCornApp(
             composable(Destination.Intro) {
                 IntroRoute()
             }
-            composable(Destination.AuthFlow){
-
+            composable(Destination.AuthFlow) {
+                AuthFlow()
             }
         }
     }
