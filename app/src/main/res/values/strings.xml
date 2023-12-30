@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CoinCorn</string>
+    <string name="intro_page_title_1">Take control of your CoinCorn</string>
+    <string name="intro_page_title_2">Invite friends</string>
+    <string name="intro_page_title_3">Setup reminders</string>
+    <string name="intro_page_text_1">Become your own money manager and make every cent count</string>
+    <string name="intro_page_text_2">It\'s more fun with friends</string>
+    <string name="intro_page_text_3">Never miss a bill payment or savings contribution</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
 </resources>
