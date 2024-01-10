@@ -3,7 +3,6 @@ package ru.coincorn.app.main
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.ComponentActivity
@@ -19,7 +18,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import ru.coincorn.app.ui.theme.CoinCornTheme
+import ru.coincorn.app.core.ui.theme.CoinCornTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

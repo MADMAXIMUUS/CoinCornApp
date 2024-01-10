@@ -4,8 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ru.coincorn.app.navigation.AppNavigator
-import ru.coincorn.app.navigation.AppNavigatorImpl
+import ru.coincorn.app.core.navigation.AppNavigator
+import ru.coincorn.app.core.navigation.AppNavigatorImpl
 import javax.inject.Singleton
 
 

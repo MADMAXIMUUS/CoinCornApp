@@ -22,9 +22,10 @@ retrofit-converter = "2.9.0"
 logging = "5.0.0-alpha.12"
 serialization = "1.9.22"
 persian = "3.0.1"
-agp = "8.2.0"
+agp = "8.2.1"
 kotlin = "1.9.21"
 ksp = "1.9.21-1.0.16"
+lottie = "6.3.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -63,6 +64,7 @@ hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", v
 
 persian = { group = "io.github.madmaximuus.persian", name = "persian", version.ref = "persian" }
 splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
+lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }

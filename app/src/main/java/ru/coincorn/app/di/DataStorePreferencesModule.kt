@@ -15,7 +15,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import ru.coincorn.app.dataStore.Constants.USER_PREFERENCES
+import ru.coincorn.app.core.dataStore.Constants.USER_PREFERENCES
 import javax.inject.Singleton
 
 @Module

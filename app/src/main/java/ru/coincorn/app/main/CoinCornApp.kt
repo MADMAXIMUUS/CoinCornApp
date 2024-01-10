@@ -12,19 +12,20 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import ru.coincorn.app.navigation.NavHost
-import androidx.navigation.compose.navigation
+import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navOptions
+import androidx.navigation.navArgument
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
-import ru.coincorn.app.featureAuth.flow.AuthFlow
+import ru.coincorn.app.core.error.model.CommonErrorArgType
+import ru.coincorn.app.core.error.presentation.CommonErrorRoute
+import ru.coincorn.app.core.navigation.Destination
+import ru.coincorn.app.core.navigation.NavHost
+import ru.coincorn.app.core.navigation.NavigationEffects
+import ru.coincorn.app.core.navigation.composable
+import ru.coincorn.app.featureAuth.data.response.AuthStep
+import ru.coincorn.app.featureAuth.presentation.flow.AuthFlow
 import ru.coincorn.app.featureIntro.presentation.IntroRoute
-import ru.coincorn.app.navigation.Destination
-import ru.coincorn.app.navigation.NavigationEffects
-import ru.coincorn.app.navigation.composable
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -61,6 +62,28 @@ fun CoinCornApp(
             }
             composable(Destination.AuthFlow) {
                 AuthFlow()
+            }
+            composable(Destination.Currency) {
+
+            }
+            composable(
+                destination = Destination.CommonError,
+                arguments = listOf(
+                    navArgument("error_model") {
+                        type = CommonErrorArgType()
+                    }
+                )
+            ) {
+                CommonErrorRoute()
+            }
+            composable(Destination.RegistrationFlow,
+                arguments = listOf(
+                    navArgument("step") {
+                        type = NavType.StringType
+                        defaultValue = AuthStep.CURRENCY.toString()
+                    }
+                )){
+
             }
         }
     }

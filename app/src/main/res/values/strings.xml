@@ -1,15 +1,58 @@
 <resources>
-    <string name="app_name">CoinCorn</string>
+    <string name="app_name" translatable="false">CoinCorn</string>
+    <string name="or">OR</string>
+    <string name="_and_">\u0020and\u0020</string>
+
+    <!-- Screen titles -->
+    <string name="welcome_title">Welcome to CoinCorn</string>
+    <string name="sign_up_title">Sign Up</string>
+    <!-- Screen Title -->
+
+    <!-- Input Labels -->
+    <string name="input_name_label">Name</string>
+    <string name="input_email_label">Email</string>
+    <string name="input_password_label">Password</string>
+    <!-- Input Labels -->
+
+    <!-- Button Labels -->
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="try_again">Try again</string>
+    <string name="welcome_sign_up_button_label">Sign Up</string>
+    <string name="welcome_sign_in_button_label">Sign In</string>
+    <string name="sign_up_button_label">Sign Up</string>
+    <string name="continue_with">Continue with …</string>
+    <!-- Button Labels -->
+
+    <!-- Errors -->
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="server_connection_error">Server connection error</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="email_is_empty">Email can\'t be empty</string>
+    <string name="email_is_not_valid">Email is incorrect</string>
+    <string name="short_password">Password must contain at least 8 characters</string>
+    <string name="password_empty">Enter password</string>
+    <string name="name_empty">Name can\' be empty</string>
+    <!-- Errors -->
+
+    <!-- Intro -->
     <string name="intro_page_title_1">Take control of your CoinCorn</string>
     <string name="intro_page_title_2">Invite friends</string>
     <string name="intro_page_title_3">Setup reminders</string>
     <string name="intro_page_text_1">Become your own money manager and make every cent count</string>
     <string name="intro_page_text_2">It\'s more fun with friends</string>
     <string name="intro_page_text_3">Never miss a bill payment or savings contribution</string>
-    <string name="skip">Skip</string>
-    <string name="next">Next</string>
-    <string name="welcome_title">Welcome to CoinCorn</string>
+    <!-- Intro -->
+
+    <!-- Welcome -->
     <string name="welcome_text">Let’s get started</string>
-    <string name="welcome_sign_up_button_label">Sign Up</string>
-    <string name="welcome_sign_in_button_label">Sign In</string>
+    <!-- Welcome -->
+
+    <!-- Registration -->
+    <string name="agreement_start">By signing up, you agree to the\u0020</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="already_have_account">Already have an account?\u0020</string>
+    <string name="sign_in">Sign In</string>
+    <!-- Registration -->
 </resources>

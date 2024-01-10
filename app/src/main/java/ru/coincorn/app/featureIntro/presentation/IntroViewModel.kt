@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import ru.coincorn.app.dataStore.Constants.INTRO
-import ru.coincorn.app.dataStore.save
+import ru.coincorn.app.core.dataStore.Constants.INTRO
+import ru.coincorn.app.core.dataStore.save
 import ru.coincorn.app.di.MainNavigation
 import ru.coincorn.app.featureIntro.data.dataSource.IntroDataSource
-import ru.coincorn.app.navigation.AppNavigator
-import ru.coincorn.app.navigation.Destination
+import ru.coincorn.app.core.navigation.AppNavigator
+import ru.coincorn.app.core.navigation.Destination
 import javax.inject.Inject
 
 @HiltViewModel
