@@ -24,21 +24,28 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun signUp(
         name: String,
         email: String,
-        password: String
+        password: String,
+        result: suspend (Boolean) -> Unit
     ) {
         val signUpModel = SignUpRequestModel(name, email, password)
         authRemoteSource
             .signUp(signUpModel)
             .catch { e ->
                 errorHandler.proceed(e)
+                result(false)
             }
             .flowOn(Dispatchers.IO)
             .collect { sessionId ->
                 credentialsRepository.saveSessionId(sessionId)
+                result(true)
             }
     }
 
-    override suspend fun signIn(email: String, password: String) {
+    override suspend fun signIn(
+        email: String,
+        password: String,
+        result: suspend (Boolean) -> Unit
+    ) {
         val signInModel = SignInRequestModel(email, password)
         authRemoteSource
             .signIn(signInModel)

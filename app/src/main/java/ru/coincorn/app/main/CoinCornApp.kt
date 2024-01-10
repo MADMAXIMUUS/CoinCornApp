@@ -18,7 +18,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import ru.coincorn.app.core.error.model.CommonErrorArgType
-import ru.coincorn.app.core.error.presentation.CommonErrorRoute
+import ru.coincorn.app.core.error.presentation.common.CommonErrorRoute
+import ru.coincorn.app.core.error.presentation.connection.ConnectionErrorRoute
 import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.core.navigation.NavHost
 import ru.coincorn.app.core.navigation.NavigationEffects
@@ -54,9 +55,7 @@ fun CoinCornApp(
             navController = navController,
             startDestination = Destination.Root
         ) {
-            composable(Destination.Root) {
-
-            }
+            composable(Destination.Root) {}
             composable(Destination.Intro) {
                 IntroRoute()
             }
@@ -64,6 +63,16 @@ fun CoinCornApp(
                 AuthFlow()
             }
             composable(Destination.Currency) {
+
+            }
+            composable(Destination.RegistrationFlow,
+                arguments = listOf(
+                    navArgument("step") {
+                        type = NavType.StringType
+                        defaultValue = AuthStep.CURRENCY.toString()
+                    }
+                )
+            ) {
 
             }
             composable(
@@ -76,14 +85,8 @@ fun CoinCornApp(
             ) {
                 CommonErrorRoute()
             }
-            composable(Destination.RegistrationFlow,
-                arguments = listOf(
-                    navArgument("step") {
-                        type = NavType.StringType
-                        defaultValue = AuthStep.CURRENCY.toString()
-                    }
-                )){
-
+            composable(Destination.ConnectionError) {
+                ConnectionErrorRoute()
             }
         }
     }

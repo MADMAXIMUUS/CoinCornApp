@@ -111,15 +111,18 @@ class SignUpViewModel @Inject constructor(
                         isLoading = true
                     )
                 }
-                val a = viewModelScope.launch(Dispatchers.IO) {
-                    authRepository.signUp(
-                        uiState.value.name,
-                        uiState.value.email,
-                        uiState.value.password
-                    )
+                authRepository.signUp(
+                    uiState.value.name,
+                    uiState.value.email,
+                    uiState.value.password
+                ) {
+                    if (it) {
+                        appNavigator.newRootScreen(
+                            Destination.RegistrationFlow,
+                            AuthStep.CONFIRM.toString()
+                        )
+                    }
                 }
-                a.join()
-                appNavigator.navigateTo(Destination.RegistrationFlow, AuthStep.CONFIRM.toString())
                 _uiState.update { currentState ->
                     currentState.copy(
                         isLoading = false

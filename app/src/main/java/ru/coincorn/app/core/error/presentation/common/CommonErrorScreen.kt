@@ -1,4 +1,4 @@
-package ru.coincorn.app.core.error.presentation
+package ru.coincorn.app.core.error.presentation.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -67,7 +67,6 @@ private fun CommonErrorScreen(
                     .size(320.dp, 411.dp),
                 painter = painterResource(id = R.drawable.ic_common_error),
                 contentDescription = "",
-                colorFilter = ColorFilter.tint(MaterialTheme.extendedColorScheme.error)
             )
             Spacer(modifier = Modifier.weight(.5f))
             Text(

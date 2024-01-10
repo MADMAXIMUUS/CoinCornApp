@@ -1,4 +1,4 @@
-package ru.coincorn.app.core.error.presentation
+package ru.coincorn.app.core.error.presentation.common
 
 data class CommonErrorScreenState(
     val title: String = "",

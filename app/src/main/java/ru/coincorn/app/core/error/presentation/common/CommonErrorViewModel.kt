@@ -1,4 +1,4 @@
-package ru.coincorn.app.core.error.presentation
+package ru.coincorn.app.core.error.presentation.common
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

@@ -19,4 +19,10 @@ class ErrorResolver @Inject constructor(
             appNavigator.navigateTo(Destination.CommonError, errorModel.toString())
         }
     }
+
+    fun resolveConnectionError(){
+        CoroutineScope(coroutineContext).launch {
+            appNavigator.navigateTo(Destination.ConnectionError)
+        }
+    }
 }

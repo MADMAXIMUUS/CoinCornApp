@@ -1,8 +1,5 @@
 package ru.coincorn.app.core.navigation
 
-import ru.coincorn.app.core.error.model.CommonErrorModel
-import ru.coincorn.app.featureAuth.data.response.AuthStep
-
 sealed class Destination(protected val route: String, vararg params: String) {
     val fullRoute: String = if (params.isEmpty()) route else {
         val builder = StringBuilder(route)
@@ -40,12 +37,16 @@ sealed class Destination(protected val route: String, vararg params: String) {
 
     data object MainFlow : NoArgumentsDestination("main_flow")
 
+    /* Errors */
     data object CommonError : Destination("common_error", "error_model") {
 
         override fun generateFullStrung(vararg args: String): String = route.appendParams(
             "error_model" to args[0]
         )
     }
+
+    data object ConnectionError : NoArgumentsDestination("connection_error")
+    /* Errors */
 }
 
 internal fun String.appendParams(vararg params: Pair<String, Any?>): String {

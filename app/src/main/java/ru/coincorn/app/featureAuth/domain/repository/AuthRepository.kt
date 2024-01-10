@@ -8,10 +8,15 @@ interface AuthRepository {
     suspend fun signUp(
         name: String,
         email: String,
-        password: String
+        password: String,
+        result: suspend (Boolean) -> Unit
     )
 
-    suspend fun signIn(email: String, password: String)
+    suspend fun signIn(
+        email: String,
+        password: String,
+        result: suspend (Boolean) -> Unit
+    )
 
     suspend fun restorePassword(email: String)
 

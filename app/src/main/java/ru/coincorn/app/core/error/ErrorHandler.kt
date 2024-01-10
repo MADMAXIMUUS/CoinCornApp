@@ -1,8 +1,8 @@
 package ru.coincorn.app.core.error
 
+import android.util.Log
 import retrofit2.HttpException
 import ru.coincorn.app.core.error.model.CommonErrorModel
-import ru.coincorn.app.core.network.util.ErrorResponse
 import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -26,12 +26,6 @@ class ErrorHandler @Inject constructor(
         }
     }
 
-    fun proceed(
-        body: ErrorResponse
-    ) {
-        val errorModel = mapper.mapErrorResponseToErrorModel(body)
-    }
-
     private fun handleHttpException(
         exception: HttpException,
         httpErrorHandler: (CommonErrorModel) -> Unit
@@ -48,16 +42,13 @@ class ErrorHandler @Inject constructor(
     ) {
         when (exception) {
             is UnknownHostException,
-            is ConnectException -> messageListener(
-                ""//rm.getString(R.string.error_msg_connect_to_server)
-            )
-            //is ApiErrorException ->
+            is ConnectException -> errorResolver.resolveConnectionError()
         }
     }
 
     companion object {
         fun logging(exception: Throwable) {
-
+            Log.e("Error", exception.toString())
         }
     }
 }

@@ -33,6 +33,8 @@
     <string name="short_password">Password must contain at least 8 characters</string>
     <string name="password_empty">Enter password</string>
     <string name="name_empty">Name can\' be empty</string>
+    <string name="connection_error_title">Connection troubles</string>
+    <string name="connection_error_message">Oops! It seems there\'s a hiccup in the connection!</string>
     <!-- Errors -->
 
     <!-- Intro -->
