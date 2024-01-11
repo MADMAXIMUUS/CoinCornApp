@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureAuth.presentation.signUp
+package ru.coincorn.app.featureAuth.presentation.signIn
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Column
@@ -37,6 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
 import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
+import io.github.madmaximuus.persian.buttons.PersianTertiaryButton
 import io.github.madmaximuus.persian.dividers.PersianFullWidthHorizontalDivider
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormCaptionConfig
@@ -52,23 +53,21 @@ import ru.coincorn.app.R
 import ru.coincorn.app.core.ui.theme.CoinCornTheme
 
 @Composable
-fun SignUpRoute(
-    viewModel: SignUpViewModel = hiltViewModel()
+fun SignInRoute(
+    viewModel: SignInViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-    SignUpScreen(
+    SignInScreen(
         state = state,
         onBackClick = viewModel::back,
-        onNameInput = viewModel::updateName,
         onEmailInput = viewModel::updateEmail,
         onPasswordInput = viewModel::updatePassword,
         onPasswordVisibilityChange = viewModel::updatePasswordVisibility,
-        onTermsClick = {},
-        onPolicyClick = {},
-        onSignUpClick = viewModel::signUp,
+        onSignInClick = viewModel::signIn,
+        onForgotPasswordClick = {},
         onContinueWithClick = {},
-        onGoToSignIn = viewModel::goToSignIn
+        onGoToSignUp = viewModel::goToSignUp
     )
 }
 
@@ -77,23 +76,20 @@ fun SignUpRoute(
     ExperimentalComposeUiApi::class
 )
 @Composable
-private fun SignUpScreen(
-    state: SignUpScreenState,
+private fun SignInScreen(
+    state: SignInScreenState,
     onBackClick: () -> Unit,
-    onNameInput: (String) -> Unit,
     onEmailInput: (String) -> Unit,
     onPasswordInput: (String) -> Unit,
     onPasswordVisibilityChange: () -> Unit,
-    onTermsClick: () -> Unit,
-    onPolicyClick: () -> Unit,
-    onSignUpClick: () -> Unit,
+    onSignInClick: () -> Unit,
+    onForgotPasswordClick: () -> Unit,
     onContinueWithClick: () -> Unit,
-    onGoToSignIn: () -> Unit
+    onGoToSignUp: () -> Unit
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    val termsText = privacyText()
-    val signInText = signInText()
+    val signUpText = signUpText()
 
     Scaffold(
         containerColor = MaterialTheme.extendedColorScheme.surface,
@@ -116,33 +112,6 @@ private fun SignUpScreen(
                 .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
-            PersianForm(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = MaterialTheme.spacing.large),
-                subhead = PersianFormSubheadConfig(
-                    text = stringResource(R.string.input_name_label)
-                ),
-                content = PersianFormContent.Input(
-                    value = state.name,
-                    onValueChange = onNameInput,
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Next
-                    ),
-                    leadingIcon = painterResource(id = R.drawable.ic_person_outlined),
-                ),
-                caption = PersianFormCaptionConfig(
-                    text = "",
-                    errorText = if (state.isNameError && state.nameError != null)
-                        stringResource(id = state.nameError)
-                    else null
-                ),
-                enabled = !state.isLoading,
-                isError = state.isNameError,
-                isSuccess = !state.isNameError && state.name.isNotEmpty()
-            )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
             PersianForm(
                 modifier = Modifier
@@ -202,32 +171,24 @@ private fun SignUpScreen(
                 isSuccess = !state.isPasswordError && state.password.isNotEmpty()
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.small))
-            ClickableText(
+            PersianTertiaryButton(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = MaterialTheme.spacing.extraLarge),
-                text = termsText,
-                style = MaterialTheme.typography.bodyMedium,
-                onClick = { offset ->
-                    termsText.getStringAnnotations(offset, offset)
-                        .firstOrNull()?.let { span ->
-                            if (span.tag == "tnc") {
-                                onTermsClick()
-                            }
-                            if (span.tag == "pp") {
-                                onPolicyClick()
-                            }
-                        }
-                }
+                    .align(Alignment.CenterHorizontally),
+                text = stringResource(R.string.forgot_password),
+                sizes = PersianButtonDefaults.smallSizes(),
+                onClick = {
+                    onForgotPasswordClick()
+                    keyboardController?.hide()
+                },
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.large))
             PersianPrimaryButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.spacing.large),
-                text = stringResource(R.string.sign_up_button_label),
+                text = stringResource(R.string.sign_in_button_label),
                 onClick = {
-                    onSignUpClick()
+                    onSignInClick()
                     keyboardController?.hide()
                 },
                 sizes = PersianButtonDefaults.largeSizes(state.isLoading),
@@ -271,13 +232,13 @@ private fun SignUpScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.spacing.large),
-                text = signInText,
+                text = signUpText,
                 style = MaterialTheme.typography.bodyMedium,
                 onClick = { offset ->
-                    signInText.getStringAnnotations(offset, offset)
+                    signUpText.getStringAnnotations(offset, offset)
                         .firstOrNull()?.let { span ->
-                            if (span.tag == "signIn") {
-                                onGoToSignIn()
+                            if (span.tag == "signUp") {
+                                onGoToSignUp()
                             }
                         }
                 }
@@ -287,32 +248,10 @@ private fun SignUpScreen(
 }
 
 @Composable
-fun privacyText(): AnnotatedString {
-    val tnc = "tnc"
-    val privacyPolicy = "pp"
-    return buildAnnotatedString {
-        withStyle(style = SpanStyle(color = MaterialTheme.extendedColorScheme.onSurfaceVariant)) {
-            append(stringResource(id = R.string.agreement_start))
-        }
-        withStyle(style = SpanStyle(color = MaterialTheme.extendedColorScheme.primary)) {
-            pushStringAnnotation(tag = tnc, annotation = tnc)
-            append(stringResource(id = R.string.terms_of_service))
-        }
-        withStyle(style = SpanStyle(color = MaterialTheme.extendedColorScheme.onSurfaceVariant)) {
-            append(stringResource(id = R.string._and_))
-        }
-        withStyle(style = SpanStyle(color = MaterialTheme.extendedColorScheme.primary)) {
-            pushStringAnnotation(tag = privacyPolicy, annotation = privacyPolicy)
-            append(stringResource(id = R.string.privacy_policy))
-        }
-    }
-}
-
-@Composable
-fun signInText(): AnnotatedString {
-    val tag = "signIn"
-    val textPart1 = stringResource(id = R.string.already_have_account)
-    val textPart2 = stringResource(id = R.string.sign_in)
+fun signUpText(): AnnotatedString {
+    val tag = "signUp"
+    val textPart1 = stringResource(id = R.string.dont_have_account)
+    val textPart2 = stringResource(id = R.string.sign_up)
     val color = MaterialTheme.extendedColorScheme.onSurface
     val clickColor = MaterialTheme.extendedColorScheme.primary
     return buildAnnotatedString {
@@ -334,18 +273,16 @@ fun signInText(): AnnotatedString {
 fun SignUpScreenPreview() {
     CoinCornTheme {
         Surface {
-            SignUpScreen(
-                state = SignUpScreenState(),
+            SignInScreen(
+                state = SignInScreenState(),
                 onBackClick = {},
-                onNameInput = {},
                 onEmailInput = {},
                 onPasswordInput = {},
                 onPasswordVisibilityChange = {},
-                onSignUpClick = {},
+                onSignInClick = {},
+                onForgotPasswordClick = {},
                 onContinueWithClick = {},
-                onGoToSignIn = {},
-                onPolicyClick = {},
-                onTermsClick = {}
+                onGoToSignUp = {},
             )
         }
     }

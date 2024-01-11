@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureAuth.presentation.signUp
+package ru.coincorn.app.featureAuth.presentation.signIn
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,14 +21,14 @@ import ru.coincorn.app.featureAuth.util.ValidatePassword
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(
+class SignInViewModel @Inject constructor(
     @NestedNavigation private val authNavigator: AppNavigator,
     @MainNavigation private val appNavigator: AppNavigator,
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(SignUpScreenState())
-    val uiState: StateFlow<SignUpScreenState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(SignInScreenState())
+    val uiState: StateFlow<SignInScreenState> = _uiState.asStateFlow()
 
     fun back() {
         viewModelScope.launch {
@@ -36,21 +36,9 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun goToSignIn() {
+    fun goToSignUp() {
         viewModelScope.launch {
-            authNavigator.replaceScreen(Destination.SignIn)
-        }
-    }
-
-    fun updateName(name: String) {
-        viewModelScope.launch {
-            _uiState.update { currentState ->
-                currentState.copy(
-                    name = name,
-                    isNameError = name.isEmpty(),
-                    nameError = R.string.name_empty
-                )
-            }
+            authNavigator.replaceScreen(Destination.SignUp)
         }
     }
 
@@ -86,7 +74,7 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    fun signUp() {
+    fun signIn() {
         viewModelScope.launch {
             _uiState.update { currentState ->
                 currentState.copy(
@@ -96,16 +84,13 @@ class SignUpViewModel @Inject constructor(
         }
         _uiState.update { currentState ->
             currentState.copy(
-                isNameError = uiState.value.name.isEmpty(),
-                nameError = R.string.name_empty,
                 isEmailError = uiState.value.email.isEmpty(),
                 emailError = R.string.email_is_empty,
                 isPasswordError = uiState.value.password.isEmpty(),
                 passwordError = R.string.password_empty
             )
         }
-        val formIsValid = !uiState.value.isNameError
-                && !uiState.value.isEmailError
+        val formIsValid = !uiState.value.isEmailError
                 && !uiState.value.isPasswordError
 
         if (formIsValid) {
@@ -115,16 +100,21 @@ class SignUpViewModel @Inject constructor(
                         isLoading = true
                     )
                 }
-                authRepository.signUp(
-                    uiState.value.name,
+                authRepository.signIn(
                     uiState.value.email,
                     uiState.value.password
                 ).collectLatest {
                     if (it) {
-                        appNavigator.newRootScreen(
-                            Destination.RegistrationFlow,
-                            AuthStep.CONFIRM.toString()
-                        )
+                        authRepository.fetchAuthStep()
+                            .collectLatest { authStep ->
+                                when (authStep) {
+                                    AuthStep.DONE -> {}
+                                    else -> appNavigator.newRootScreen(
+                                        Destination.RegistrationFlow,
+                                        authStep.toString()
+                                    )
+                                }
+                            }
                     }
                 }
                 _uiState.update { currentState ->

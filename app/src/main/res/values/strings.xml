@@ -21,7 +21,9 @@
     <string name="welcome_sign_up_button_label">Sign Up</string>
     <string name="welcome_sign_in_button_label">Sign In</string>
     <string name="sign_up_button_label">Sign Up</string>
+    <string name="sign_in_button_label">Sign In</string>
     <string name="continue_with">Continue with …</string>
+    <string name="forgot_password">Forgot password?</string>
     <!-- Button Labels -->
 
     <!-- Errors -->
@@ -55,6 +57,8 @@
     <string name="terms_of_service">Terms of Service</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="already_have_account">Already have an account?\u0020</string>
+    <string name="dont_have_account">Don\’t have an account yet?\u0020</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
     <!-- Registration -->
 </resources>
