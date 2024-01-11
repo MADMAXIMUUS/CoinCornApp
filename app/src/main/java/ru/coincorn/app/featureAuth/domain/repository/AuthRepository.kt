@@ -9,14 +9,12 @@ interface AuthRepository {
         name: String,
         email: String,
         password: String,
-        result: suspend (Boolean) -> Unit
-    )
+    ): Flow<Boolean>
 
     suspend fun signIn(
         email: String,
-        password: String,
-        result: suspend (Boolean) -> Unit
-    )
+        password: String
+    ): Flow<Boolean>
 
     suspend fun restorePassword(email: String)
 

@@ -3,9 +3,8 @@ package ru.coincorn.app.featureAuth.data.repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import ru.coincorn.app.core.error.ErrorHandler
 import ru.coincorn.app.featureAuth.data.datasource.AuthRemoteDataSource
 import ru.coincorn.app.featureAuth.data.request.SignInRequestModel
@@ -24,37 +23,35 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun signUp(
         name: String,
         email: String,
-        password: String,
-        result: suspend (Boolean) -> Unit
-    ) {
+        password: String
+    ): Flow<Boolean> {
         val signUpModel = SignUpRequestModel(name, email, password)
-        authRemoteSource
+        return authRemoteSource
             .signUp(signUpModel)
             .catch { e ->
                 errorHandler.proceed(e)
-                result(false)
             }
             .flowOn(Dispatchers.IO)
-            .collect { sessionId ->
+            .map { sessionId ->
                 credentialsRepository.saveSessionId(sessionId)
-                result(true)
+                true
             }
     }
 
     override suspend fun signIn(
         email: String,
         password: String,
-        result: suspend (Boolean) -> Unit
-    ) {
+    ): Flow<Boolean> {
         val signInModel = SignInRequestModel(email, password)
-        authRemoteSource
+        return authRemoteSource
             .signIn(signInModel)
             .catch { e ->
                 errorHandler.proceed(e)
             }
             .flowOn(Dispatchers.IO)
-            .collect { sessionId ->
+            .map { sessionId ->
                 credentialsRepository.saveSessionId(sessionId)
+                true
             }
     }
 

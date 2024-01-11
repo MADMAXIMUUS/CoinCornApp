@@ -3,23 +3,21 @@ package ru.coincorn.app.featureAuth.presentation.signUp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import ru.coincorn.app.R
+import ru.coincorn.app.core.navigation.AppNavigator
+import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.di.MainNavigation
 import ru.coincorn.app.di.NestedNavigation
+import ru.coincorn.app.featureAuth.data.response.AuthStep
 import ru.coincorn.app.featureAuth.domain.repository.AuthRepository
 import ru.coincorn.app.featureAuth.util.ValidateEmail
 import ru.coincorn.app.featureAuth.util.ValidatePassword
-import ru.coincorn.app.core.navigation.AppNavigator
-import ru.coincorn.app.core.navigation.Destination
-import ru.coincorn.app.featureAuth.data.response.AuthStep
 import javax.inject.Inject
 
 @HiltViewModel
@@ -115,7 +113,7 @@ class SignUpViewModel @Inject constructor(
                     uiState.value.name,
                     uiState.value.email,
                     uiState.value.password
-                ) {
+                ).collectLatest {
                     if (it) {
                         appNavigator.newRootScreen(
                             Destination.RegistrationFlow,
