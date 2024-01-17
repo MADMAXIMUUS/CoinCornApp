@@ -1,4 +1,4 @@
-package ru.coincorn.app.core.error.presentation.connection
+package ru.coincorn.app.core.error.presentation.auth
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -30,18 +30,18 @@ import ru.coincorn.app.R
 import ru.coincorn.app.core.ui.theme.CoinCornTheme
 
 @Composable
-fun ConnectionErrorRoute(
-    viewModel: ConnectionErrorViewModel = hiltViewModel()
+fun AuthErrorRoute(
+    viewModel: AuthErrorViewModel = hiltViewModel()
 ) {
 
-    ConnectionErrorScreen(
-        onBackClick = viewModel::back
+    AuthErrorScreen(
+        onAuthClick = viewModel::goToAuth
     )
 }
 
 @Composable
-private fun ConnectionErrorScreen(
-    onBackClick: () -> Unit
+private fun AuthErrorScreen(
+    onAuthClick: () -> Unit
 ) {
     Surface(
         modifier = Modifier
@@ -59,13 +59,13 @@ private fun ConnectionErrorScreen(
             Image(
                 modifier = Modifier
                     .size(320.dp, 411.dp),
-                painter = painterResource(id = R.drawable.img_network_error),
+                painter = painterResource(id = R.drawable.img_auth_error),
                 contentDescription = "",
             )
             Spacer(modifier = Modifier.weight(.5f))
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(id = R.string.connection_error_title),
+                text = stringResource(id = R.string.auth_error_title),
                 color = MaterialTheme.extendedColorScheme.primary,
                 style = MaterialTheme.typography.headlineMedium,
                 textAlign = TextAlign.Center
@@ -73,7 +73,7 @@ private fun ConnectionErrorScreen(
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraSmall))
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(id = R.string.connection_error_message),
+                text = stringResource(id = R.string.auth_error_message),
                 color = MaterialTheme.extendedColorScheme.secondary,
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center
@@ -81,9 +81,9 @@ private fun ConnectionErrorScreen(
             Spacer(modifier = Modifier.weight(1f))
             PersianPrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(id = R.string.try_again),
+                text = stringResource(id = R.string.sign_in_button_label),
                 sizes = PersianButtonDefaults.largeSizes(),
-                onClick = onBackClick
+                onClick = onAuthClick
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraExtraLarge))
         }
@@ -96,8 +96,8 @@ private fun ConnectionErrorScreen(
 fun ConnectionErrorScreenPreview() {
     CoinCornTheme {
         Surface {
-            ConnectionErrorScreen(
-                onBackClick = {}
+            AuthErrorScreen(
+                onAuthClick = {}
             )
         }
     }

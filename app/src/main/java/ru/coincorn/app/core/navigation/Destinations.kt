@@ -46,6 +46,8 @@ sealed class Destination(protected val route: String, vararg params: String) {
     }
 
     data object ConnectionError : NoArgumentsDestination("connection_error")
+
+    data object AuthError : NoArgumentsDestination("auth_error")
     /* Errors */
 }
 

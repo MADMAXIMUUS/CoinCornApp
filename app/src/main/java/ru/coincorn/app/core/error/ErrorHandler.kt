@@ -32,6 +32,7 @@ class ErrorHandler @Inject constructor(
     ) {
         val errorModel = mapper.mapHttpExceptionToCommonError(exception)
         when {
+            exception.isAuthError() -> errorResolver.resolveAuthError()
             else -> httpErrorHandler(errorModel)
         }
     }
@@ -52,3 +53,6 @@ class ErrorHandler @Inject constructor(
         }
     }
 }
+
+private fun HttpException.isAuthError(): Boolean =
+    code() == 401 || code() == 403 || code() == 406 || code() == 407

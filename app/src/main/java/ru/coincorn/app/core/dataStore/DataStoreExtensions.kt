@@ -23,16 +23,16 @@ suspend fun <T : Any> DataStore<Preferences>.get(
     }.firstOrNull()
 }
 
-suspend fun DataStore<Preferences>.contains(
-    key: Preferences.Key<Any>
+suspend fun <T : Any> DataStore<Preferences>.contains(
+    key: Preferences.Key<T>
 ): Boolean {
     return data.map { preferences ->
         preferences[key]
     }.firstOrNull() != null
 }
 
-suspend fun DataStore<Preferences>.remove(
-    key: Preferences.Key<Any>
+suspend fun <T : Any> DataStore<Preferences>.remove(
+    key: Preferences.Key<T>
 ) {
     edit { preferences ->
         preferences.remove(key)
