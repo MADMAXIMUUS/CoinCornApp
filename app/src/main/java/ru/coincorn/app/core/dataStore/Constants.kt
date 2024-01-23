@@ -9,5 +9,6 @@ object Constants {
 
     val SESSION_TOKEN = stringPreferencesKey("session_id")
     val INTRO = booleanPreferencesKey("is_intro_showed")
+    val EMAIL = stringPreferencesKey("email")
 
 }

@@ -10,10 +10,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.coincorn.app.BuildConfig
-import ru.coincorn.app.featureAuth.domain.repository.CredentialsRepository
 import ru.coincorn.app.core.network.call.NetworkResponseAdapterFactory
 import ru.coincorn.app.core.network.interceptor.AuthInterceptor
 import ru.coincorn.app.core.network.interceptor.UserAgentInterceptor
+import ru.coincorn.app.featureAuth.domain.repository.CredentialsRepository
 import javax.inject.Singleton
 
 @Module

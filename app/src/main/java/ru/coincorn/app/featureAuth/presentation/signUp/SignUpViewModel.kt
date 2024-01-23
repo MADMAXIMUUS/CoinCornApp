@@ -1,5 +1,7 @@
 package ru.coincorn.app.featureAuth.presentation.signUp
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,11 +12,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.coincorn.app.R
+import ru.coincorn.app.core.dataStore.Constants
+import ru.coincorn.app.core.dataStore.save
 import ru.coincorn.app.core.navigation.AppNavigator
 import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.di.MainNavigation
 import ru.coincorn.app.di.NestedNavigation
-import ru.coincorn.app.featureAuth.data.response.AuthStep
 import ru.coincorn.app.featureAuth.domain.repository.AuthRepository
 import ru.coincorn.app.featureAuth.util.ValidateEmail
 import ru.coincorn.app.featureAuth.util.ValidatePassword
@@ -24,7 +27,8 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor(
     @NestedNavigation private val authNavigator: AppNavigator,
     @MainNavigation private val appNavigator: AppNavigator,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val dataStore: DataStore<Preferences>
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SignUpScreenState())
@@ -121,10 +125,8 @@ class SignUpViewModel @Inject constructor(
                     uiState.value.password
                 ).collectLatest {
                     if (it) {
-                        appNavigator.newRootScreen(
-                            Destination.RegistrationFlow,
-                            AuthStep.CONFIRM.toString()
-                        )
+                        dataStore.save(Constants.EMAIL, uiState.value.email)
+                        appNavigator.newRootScreen(Destination.Verify)
                     }
                 }
                 _uiState.update { currentState ->

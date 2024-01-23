@@ -1,13 +1,13 @@
-package ru.coincorn.app.featureAuth.data.datasource
+package ru.coincorn.app.featureAuth.data.dataSource
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import ru.coincorn.app.core.network.util.onError
+import ru.coincorn.app.core.network.util.onSuccess
 import ru.coincorn.app.featureAuth.data.api.AuthApi
 import ru.coincorn.app.featureAuth.data.request.SignInRequestModel
 import ru.coincorn.app.featureAuth.data.request.SignUpRequestModel
 import ru.coincorn.app.featureAuth.data.response.AuthStep
-import ru.coincorn.app.core.network.util.onError
-import ru.coincorn.app.core.network.util.onSuccess
 import javax.inject.Inject
 
 class AuthRemoteDataSource @Inject constructor(

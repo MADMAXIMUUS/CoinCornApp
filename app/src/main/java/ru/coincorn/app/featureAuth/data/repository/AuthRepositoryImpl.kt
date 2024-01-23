@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import ru.coincorn.app.core.error.ErrorHandler
-import ru.coincorn.app.featureAuth.data.datasource.AuthRemoteDataSource
+import ru.coincorn.app.featureAuth.data.dataSource.AuthRemoteDataSource
 import ru.coincorn.app.featureAuth.data.request.SignInRequestModel
 import ru.coincorn.app.featureAuth.data.request.SignUpRequestModel
 import ru.coincorn.app.featureAuth.data.response.AuthStep

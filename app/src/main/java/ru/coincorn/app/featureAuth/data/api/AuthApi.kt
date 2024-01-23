@@ -3,10 +3,10 @@ package ru.coincorn.app.featureAuth.data.api
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import ru.coincorn.app.core.network.util.NetworkResponse
 import ru.coincorn.app.featureAuth.data.request.SignInRequestModel
 import ru.coincorn.app.featureAuth.data.request.SignUpRequestModel
 import ru.coincorn.app.featureAuth.data.response.AuthStepResponse
-import ru.coincorn.app.core.network.util.NetworkResponse
 
 interface AuthApi {
 

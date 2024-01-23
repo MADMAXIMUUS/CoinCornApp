@@ -174,7 +174,7 @@ private fun SignInScreen(
             PersianTertiaryButton(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally),
-                text = stringResource(R.string.forgot_password),
+                text = stringResource(R.string.forgot_password_button_label),
                 sizes = PersianButtonDefaults.smallSizes(),
                 onClick = {
                     onForgotPasswordClick()
@@ -222,7 +222,7 @@ private fun SignInScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.spacing.large),
-                text = stringResource(R.string.continue_with),
+                text = stringResource(R.string.continue_with_button_label),
                 onClick = onContinueWithClick,
                 enabled = !state.isLoading,
                 sizes = PersianButtonDefaults.largeSizes(),

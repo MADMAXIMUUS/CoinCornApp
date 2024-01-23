@@ -25,15 +25,16 @@ sealed class Destination(protected val route: String, vararg params: String) {
 
     data object SignUp : NoArgumentsDestination("sign_up")
 
-    data object Currency : NoArgumentsDestination("registration_currency")
-
     data object SignIn : NoArgumentsDestination("sign_in")
 
-    data object RegistrationFlow : Destination("registration_flow", "step") {
-        override fun generateFullStrung(vararg args: String): String = route.appendParams(
-            "step" to args[0]
-        )
-    }
+    data object Verify : NoArgumentsDestination("verify")
+
+    data object RegistrationAccountFlow : NoArgumentsDestination("registration_account_flow")
+
+    data object RegistrationAccountIntro : NoArgumentsDestination("registration_account_intro")
+
+    data object RegistrationAccount : NoArgumentsDestination("registration_account")
+    data object RegistrationAccountFinish : NoArgumentsDestination("registration_account_finish")
 
     data object MainFlow : NoArgumentsDestination("main_flow")
 

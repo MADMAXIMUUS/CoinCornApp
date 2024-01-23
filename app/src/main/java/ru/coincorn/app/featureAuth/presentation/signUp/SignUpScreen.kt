@@ -261,7 +261,7 @@ private fun SignUpScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = MaterialTheme.spacing.large),
-                text = stringResource(R.string.continue_with),
+                text = stringResource(R.string.continue_with_button_label),
                 onClick = onContinueWithClick,
                 enabled = !state.isLoading,
                 sizes = PersianButtonDefaults.largeSizes(),

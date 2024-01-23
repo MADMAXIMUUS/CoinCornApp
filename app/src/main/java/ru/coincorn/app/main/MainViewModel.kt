@@ -48,10 +48,8 @@ class MainViewModel @Inject constructor(
                     .collectLatest {
                         when (it) {
                             AuthStep.DONE -> {}
-                            else -> appNavigator.newRootScreen(
-                                Destination.RegistrationFlow,
-                                it.toString()
-                            )
+                            AuthStep.VERIFY -> appNavigator.newRootScreen(Destination.Verify)
+                            AuthStep.ACCOUNT -> appNavigator.newRootScreen(Destination.RegistrationAccountFlow)
                         }
                     }
             }

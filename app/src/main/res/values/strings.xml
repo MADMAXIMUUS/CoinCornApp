@@ -6,12 +6,17 @@
     <!-- Screen titles -->
     <string name="welcome_title">Welcome to CoinCorn</string>
     <string name="sign_up_title">Sign Up</string>
+    <string name="verify_title">Verification</string>
+    <string name="main_account_title">Main Account</string>
     <!-- Screen Title -->
 
     <!-- Input Labels -->
     <string name="input_name_label">Name</string>
     <string name="input_email_label">Email</string>
     <string name="input_password_label">Password</string>
+    <string name="input_amount_label">Amount</string>
+    <string name="input_account_type">Account type</string>
+    <string name="input_currency_list">Currency</string>
     <!-- Input Labels -->
 
     <!-- Button Labels -->
@@ -22,8 +27,14 @@
     <string name="welcome_sign_in_button_label">Sign In</string>
     <string name="sign_up_button_label">Sign Up</string>
     <string name="sign_in_button_label">Sign In</string>
-    <string name="continue_with">Continue with …</string>
-    <string name="forgot_password">Forgot password?</string>
+    <string name="continue_with_button_label">Continue with …</string>
+    <string name="forgot_password_button_label">Forgot password?</string>
+    <string name="resend_email_pattern_button_label">Resend email… %s</string>
+    <string name="resend_email_button_label">Resend email</string>
+    <string name="verify_button_label">Verify</string>
+    <string name="lets_go_button_label">Let\'s go</string>
+    <string name="nice_button_label">Nice</string>
+    <string name="create_button_label">Create</string>
     <!-- Button Labels -->
 
     <!-- Errors -->
@@ -37,6 +48,8 @@
     <string name="name_empty">Name can\' be empty</string>
     <string name="connection_error_title">Connection troubles</string>
     <string name="connection_error_message">Oops! It seems there\'s a hiccup in the connection!</string>
+    <string name="auth_error_title">Long time no see</string>
+    <string name="auth_error_message">Sign in again to continue.</string>
     <!-- Errors -->
 
     <!-- Intro -->
@@ -52,7 +65,7 @@
     <string name="welcome_text">Let’s get started</string>
     <!-- Welcome -->
 
-    <!-- Registration -->
+    <!-- Auth -->
     <string name="agreement_start">By signing up, you agree to the\u0020</string>
     <string name="terms_of_service">Terms of Service</string>
     <string name="privacy_policy">Privacy policy</string>
@@ -60,5 +73,23 @@
     <string name="dont_have_account">Don\’t have an account yet?\u0020</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
-    <!-- Registration -->
+    <!-- Auth -->
+
+    <!-- Verification -->
+    <string name="verify_header">Enter your Verification\nCode</string>
+    <string name="send_message">We send verification code to your email\n</string>
+    <!-- Verification -->
+
+    <!-- Registration Account Intro -->
+    <string name="registration_account_header">Let’s setup your\nMain Account!</string>
+    <string name="registration_account_message">Account can be your bank account, credit card or\ncash.</string>
+    <string name="registration_account_intro_title">Setup account</string>
+    <string name="registration_account_intro_text">Let\'s setup your account</string>
+    <!-- Registration Account Intro -->
+
+    <!-- Registration Account Finish -->
+    <string name="registration_account_finish_title">You\'re set</string>
+    <string name="registration_account_finish_text">It\'s time to take control\nof your CoinCorn</string>
+    <!-- Registration Account Intro -->
+
 </resources>

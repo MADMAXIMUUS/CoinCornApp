@@ -17,7 +17,7 @@ class UserAgentInterceptor @Inject constructor() : Interceptor {
     }
 
     private fun getUserAgentString(): String = try {
-        "Rabbit/" +
+        "CoinCornApp/" +
                 BuildConfig.VERSION_NAME +
                 " (Linux; Android " +
                 Build.VERSION.RELEASE +

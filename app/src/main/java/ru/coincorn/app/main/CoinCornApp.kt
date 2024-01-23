@@ -13,20 +13,21 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import ru.coincorn.app.core.error.model.CommonErrorArgType
+import ru.coincorn.app.core.error.presentation.auth.AuthErrorRoute
 import ru.coincorn.app.core.error.presentation.common.CommonErrorRoute
 import ru.coincorn.app.core.error.presentation.connection.ConnectionErrorRoute
 import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.core.navigation.NavHost
 import ru.coincorn.app.core.navigation.NavigationEffects
 import ru.coincorn.app.core.navigation.composable
-import ru.coincorn.app.featureAuth.data.response.AuthStep
+import ru.coincorn.app.featureAccount.presentation.flow.RegistrationAccountFlow
 import ru.coincorn.app.featureAuth.presentation.flow.AuthFlow
 import ru.coincorn.app.featureIntro.presentation.IntroRoute
+import ru.coincorn.app.featureVerification.presentation.verify.VerifyRoute
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -55,26 +56,6 @@ fun CoinCornApp(
             navController = navController,
             startDestination = Destination.Root
         ) {
-            composable(Destination.Root) {}
-            composable(Destination.Intro) {
-                IntroRoute()
-            }
-            composable(Destination.AuthFlow) {
-                AuthFlow()
-            }
-            composable(Destination.Currency) {
-
-            }
-            composable(Destination.RegistrationFlow,
-                arguments = listOf(
-                    navArgument("step") {
-                        type = NavType.StringType
-                        defaultValue = AuthStep.CURRENCY.toString()
-                    }
-                )
-            ) {
-
-            }
             composable(
                 destination = Destination.CommonError,
                 arguments = listOf(
@@ -87,6 +68,25 @@ fun CoinCornApp(
             }
             composable(Destination.ConnectionError) {
                 ConnectionErrorRoute()
+            }
+            composable(Destination.AuthError) {
+                AuthErrorRoute()
+            }
+            composable(Destination.Root) {}
+            composable(Destination.Intro) {
+                IntroRoute()
+            }
+            composable(Destination.AuthFlow) {
+                AuthFlow()
+            }
+            composable(Destination.Verify) {
+                VerifyRoute()
+            }
+            composable(Destination.RegistrationAccountFlow) {
+                RegistrationAccountFlow()
+            }
+            composable(Destination.MainFlow){
+
             }
         }
     }

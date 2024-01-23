@@ -1,5 +1,7 @@
 package ru.coincorn.app.featureAuth.presentation.signIn
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,6 +12,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import ru.coincorn.app.R
+import ru.coincorn.app.core.dataStore.Constants.EMAIL
+import ru.coincorn.app.core.dataStore.save
 import ru.coincorn.app.core.navigation.AppNavigator
 import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.di.MainNavigation
@@ -24,7 +28,8 @@ import javax.inject.Inject
 class SignInViewModel @Inject constructor(
     @NestedNavigation private val authNavigator: AppNavigator,
     @MainNavigation private val appNavigator: AppNavigator,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val dataStore: DataStore<Preferences>
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SignInScreenState())
@@ -105,14 +110,14 @@ class SignInViewModel @Inject constructor(
                     uiState.value.password
                 ).collectLatest {
                     if (it) {
+                        dataStore.save(EMAIL, uiState.value.email)
                         authRepository.fetchAuthStep()
                             .collectLatest { authStep ->
                                 when (authStep) {
-                                    AuthStep.DONE -> {}
-                                    else -> appNavigator.newRootScreen(
-                                        Destination.RegistrationFlow,
-                                        authStep.toString()
-                                    )
+                                    AuthStep.DONE -> appNavigator.newRootScreen(Destination.MainFlow)
+                                    AuthStep.VERIFY -> appNavigator.newRootScreen(Destination.Verify)
+                                    AuthStep.ACCOUNT ->
+                                        appNavigator.newRootScreen(Destination.RegistrationAccountFlow)
                                 }
                             }
                     }
