@@ -1,31 +1,33 @@
 [versions]
 core-ktx = "1.12.0"
-navigation = "2.7.6"
-compose = "1.5.4"
+navigation = "2.7.7"
+compose = "1.6.5"
 lifecycle = "2.7.0"
 activity-compose = "1.8.2"
-material = "1.1.2"
-datastore = "1.0.0"
+material = "1.2.1"
+datastore = "1.1.0"
 collection-immutable = "0.3.7"
 glide = "1.0.0-beta01"
 splash = "1.0.1"
-hilt = "2.50"
-hilt-compiler = "1.1.0"
-hilt-navigation = "1.1.0"
+hilt = "2.51.1"
+hilt-compiler = "1.2.0"
+hilt-navigation = "1.2.0"
 hilt-plugin = "2.50"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
-retrofit = "2.9.0"
-okhttp = "5.0.0-alpha.12"
-retrofit-converter = "2.9.0"
-logging = "5.0.0-alpha.12"
-serialization = "1.9.22"
-persian = "3.1.0"
-agp = "8.2.1"
-kotlin = "1.9.21"
+retrofit = "2.11.0"
+okhttp = "5.0.0-alpha.14"
+retrofit-converter = "2.11.0"
+logging = "5.0.0-alpha.14"
+serialization = "1.9.23"
+persian = "5.0.1"
+agp = "8.3.2"
+kotlin = "1.9.23"
 ksp = "1.9.21-1.0.16"
-lottie = "6.3.0"
+lottie = "6.4.0"
+google-services = "4.4.1"
+firebase-messaging = "23.4.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -71,6 +73,8 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "google-services" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebase-messaging" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
