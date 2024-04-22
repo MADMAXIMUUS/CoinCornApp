@@ -23,11 +23,17 @@ sealed class Destination(protected val route: String, vararg params: String) {
 
     data object Welcome : NoArgumentsDestination("welcome")
 
-    data object SignUp : NoArgumentsDestination("sign_up")
+    data object AuthEnterEmail : NoArgumentsDestination("auth_enter_email")
 
-    data object SignIn : NoArgumentsDestination("sign_in")
+    data object AuthEnterCode : Destination("auth_enter_code", "email_param"){
+        override fun generateFullStrung(vararg args: String): String = route.appendParams(
+            "email_param" to args[0]
+        )
+    }
 
-    data object Verify : NoArgumentsDestination("verify")
+    data object RegistrationNameFlow : NoArgumentsDestination("registration_name_flow")
+
+    data object RegistrationName : NoArgumentsDestination("registration_name")
 
     data object RegistrationAccountFlow : NoArgumentsDestination("registration_account_flow")
 

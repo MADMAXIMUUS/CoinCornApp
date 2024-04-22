@@ -5,7 +5,7 @@
 
     <!-- Screen titles -->
     <string name="welcome_title">Welcome to CoinCorn</string>
-    <string name="sign_up_title">Sign Up</string>
+    <string name="auth_title">Authentication</string>
     <string name="verify_title">Verification</string>
     <string name="main_account_title">Main Account</string>
     <!-- Screen Title -->
@@ -23,10 +23,10 @@
     <string name="skip">Skip</string>
     <string name="next">Next</string>
     <string name="try_again">Try again</string>
-    <string name="welcome_sign_up_button_label">Sign Up</string>
+    <string name="welcome_continue_email_button_label">Continue with E-mail</string>
     <string name="welcome_sign_in_button_label">Sign In</string>
     <string name="sign_up_button_label">Sign Up</string>
-    <string name="sign_in_button_label">Sign In</string>
+    <string name="send_code_label">Send code</string>
     <string name="continue_with_button_label">Continue with …</string>
     <string name="forgot_password_button_label">Forgot password?</string>
     <string name="resend_email_pattern_button_label">Resend email… %s</string>
@@ -66,6 +66,7 @@
     <!-- Welcome -->
 
     <!-- Auth -->
+    <string name="auth_header">Enter your E-mail</string>
     <string name="agreement_start">By signing up, you agree to the\u0020</string>
     <string name="terms_of_service">Terms of Service</string>
     <string name="privacy_policy">Privacy policy</string>
@@ -76,8 +77,8 @@
     <!-- Auth -->
 
     <!-- Verification -->
-    <string name="verify_header">Enter your Verification\nCode</string>
-    <string name="send_message">We send verification code to your email\n</string>
+    <string name="verify_header">Enter code from E-mail</string>
+    <string name="send_message">We send code to your email\n</string>
     <!-- Verification -->
 
     <!-- Registration Account Intro -->

@@ -5,7 +5,7 @@ data class AuthStepResponse(
 )
 
 enum class AuthStep {
-    ACCOUNT, DONE, VERIFY;
+    ACCOUNT, DONE, NAME;
 
     override fun toString(): String = this.name
 

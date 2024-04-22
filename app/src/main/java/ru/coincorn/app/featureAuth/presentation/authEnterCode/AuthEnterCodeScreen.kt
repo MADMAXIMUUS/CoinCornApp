@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureVerification.presentation.verify
+package ru.coincorn.app.featureAuth.presentation.authEnterCode
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.madmaximuus.persian.buttons.PersianButtonDefaults
-import io.github.madmaximuus.persian.buttons.PersianPrimaryButton
 import io.github.madmaximuus.persian.buttons.PersianSecondaryButton
 import io.github.madmaximuus.persian.forms.PersianForm
 import io.github.madmaximuus.persian.forms.PersianFormCaptionConfig
@@ -30,40 +29,34 @@ import io.github.madmaximuus.persian.forms.PersianFormContent
 import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
 import ru.coincorn.app.R
 import ru.coincorn.app.core.ui.theme.CoinCornTheme
 
 @Composable
-fun VerifyRoute(
-    viewModel: VerifyViewModel = hiltViewModel()
+fun AuthEnterCodeRoute(
+    viewModel: AuthEnterCodeViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-    VerifyScreen(
+    AuthEnterCodeScreen(
         state = state,
         onCodeInput = viewModel::updateCode,
         onResendClick = viewModel::resendEmail,
-        onVerifyClick = viewModel::verify
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun VerifyScreen(
-    state: VerifyScreenState,
+private fun AuthEnterCodeScreen(
+    state: AuthEnterCodeScreenState,
     onCodeInput: (String, Int) -> Unit,
-    onResendClick: () -> Unit,
-    onVerifyClick: () -> Unit
+    onResendClick: () -> Unit
 ) {
     Scaffold(
         containerColor = MaterialTheme.extendedColorScheme.surface,
         topBar = {
             PersianTopAppBar(
-                middle = PersianTopAppBarMiddle.Title(
-                    text = stringResource(R.string.verify_title)
-                ),
-                actionItemsCount = 0
+                title = stringResource(R.string.auth_title)
             )
         },
     ) { padding ->
@@ -101,7 +94,8 @@ private fun VerifyScreen(
                     values = state.code,
                     onValueChange = onCodeInput
                 ),
-                caption = PersianFormCaptionConfig(text = "")
+                caption = PersianFormCaptionConfig(text = ""),
+                enabled = !state.verifyLoading
             )
             PersianSecondaryButton(
                 modifier = Modifier
@@ -116,19 +110,6 @@ private fun VerifyScreen(
                 enabled = state.resendEnabled,
                 loading = state.resendLoading,
                 onClick = onResendClick
-            )
-            PersianPrimaryButton(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        top = MaterialTheme.spacing.extraLarge,
-                        start = MaterialTheme.spacing.large,
-                        end = MaterialTheme.spacing.large
-                    ),
-                sizes = PersianButtonDefaults.largeSizes(),
-                text = stringResource(id = R.string.verify_button_label),
-                loading = state.verifyLoading,
-                onClick = onVerifyClick
             )
         }
     }
@@ -152,14 +133,13 @@ fun emailText(email: String): AnnotatedString {
 private fun VerifyScreenPreview() {
     CoinCornTheme {
         Surface {
-            VerifyScreen(
-                state = VerifyScreenState(
+            AuthEnterCodeScreen(
+                state = AuthEnterCodeScreenState(
                     email = "example@example.com",
                     timer = "04:59"
                 ),
                 onCodeInput = { _, _ -> },
                 onResendClick = {},
-                onVerifyClick = {}
             )
         }
     }

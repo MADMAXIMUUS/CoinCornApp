@@ -14,15 +14,17 @@ class WelcomeViewModel @Inject constructor(
     @NestedNavigation private val appNavigator: AppNavigator
 ) : ViewModel() {
 
-    fun signUp() {
+    fun continueWithEmail() {
         viewModelScope.launch {
-            appNavigator.navigateTo(Destination.SignUp)
+            appNavigator.navigateTo(Destination.AuthEnterEmail)
         }
     }
 
-    fun signIn() {
-        viewModelScope.launch {
-            appNavigator.navigateTo(Destination.SignIn)
-        }
+    fun continueWithGoogle() {
+
+    }
+
+    fun continueWithApple() {
+
     }
 }

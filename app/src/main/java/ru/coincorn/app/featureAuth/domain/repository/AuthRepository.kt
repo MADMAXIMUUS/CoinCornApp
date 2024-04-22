@@ -5,20 +5,16 @@ import ru.coincorn.app.featureAuth.data.response.AuthStep
 
 interface AuthRepository {
 
-    suspend fun signUp(
-        name: String,
+    suspend fun auth(
         email: String,
-        password: String,
-    ): Flow<Boolean>
+    ): Flow<Unit>
 
-    suspend fun signIn(
-        email: String,
-        password: String
-    ): Flow<Boolean>
+    suspend fun resendEmail(): Flow<Unit>
 
-    suspend fun restorePassword(email: String)
-
-    suspend fun checkCode(code: String)
+    suspend fun verify(
+        code: String,
+        email: String
+    ): Flow<Unit>
 
     suspend fun fetchAuthStep(): Flow<AuthStep>
 

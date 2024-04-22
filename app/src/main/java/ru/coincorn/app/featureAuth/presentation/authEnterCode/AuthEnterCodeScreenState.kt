@@ -1,6 +1,6 @@
-package ru.coincorn.app.featureVerification.presentation.verify
+package ru.coincorn.app.featureAuth.presentation.authEnterCode
 
-data class VerifyScreenState(
+data class AuthEnterCodeScreenState(
     val code: List<String> = listOf("", "", "", "", "", ""),
     val timer: String = "",
     val resendEnabled: Boolean = false,

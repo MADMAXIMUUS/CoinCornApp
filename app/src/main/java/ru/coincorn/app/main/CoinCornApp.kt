@@ -1,6 +1,5 @@
 package ru.coincorn.app.main
 
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -27,9 +26,7 @@ import ru.coincorn.app.core.navigation.composable
 import ru.coincorn.app.featureAccount.presentation.flow.RegistrationAccountFlow
 import ru.coincorn.app.featureAuth.presentation.flow.AuthFlow
 import ru.coincorn.app.featureIntro.presentation.IntroRoute
-import ru.coincorn.app.featureVerification.presentation.verify.VerifyRoute
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CoinCornApp(
     mainViewModel: MainViewModel
@@ -56,6 +53,7 @@ fun CoinCornApp(
             navController = navController,
             startDestination = Destination.Root
         ) {
+            composable(Destination.Root) {}
             composable(
                 destination = Destination.CommonError,
                 arguments = listOf(
@@ -72,20 +70,19 @@ fun CoinCornApp(
             composable(Destination.AuthError) {
                 AuthErrorRoute()
             }
-            composable(Destination.Root) {}
             composable(Destination.Intro) {
                 IntroRoute()
             }
             composable(Destination.AuthFlow) {
                 AuthFlow()
             }
-            composable(Destination.Verify) {
-                VerifyRoute()
+            composable(Destination.RegistrationNameFlow) {
+                //VerifyRoute()
             }
             composable(Destination.RegistrationAccountFlow) {
                 RegistrationAccountFlow()
             }
-            composable(Destination.MainFlow){
+            composable(Destination.MainFlow) {
 
             }
         }
