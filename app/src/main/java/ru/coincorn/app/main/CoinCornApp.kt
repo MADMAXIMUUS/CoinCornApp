@@ -26,6 +26,7 @@ import ru.coincorn.app.core.navigation.composable
 import ru.coincorn.app.featureAccount.presentation.flow.RegistrationAccountFlow
 import ru.coincorn.app.featureAuth.presentation.flow.AuthFlow
 import ru.coincorn.app.featureIntro.presentation.IntroRoute
+import ru.coincorn.app.featureProfile.presentation.flow.RegistrationNameFlow
 
 @Composable
 fun CoinCornApp(
@@ -77,7 +78,7 @@ fun CoinCornApp(
                 AuthFlow()
             }
             composable(Destination.RegistrationNameFlow) {
-                //VerifyRoute()
+                RegistrationNameFlow()
             }
             composable(Destination.RegistrationAccountFlow) {
                 RegistrationAccountFlow()

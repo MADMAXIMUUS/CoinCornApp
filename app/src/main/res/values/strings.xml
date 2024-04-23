@@ -8,6 +8,7 @@
     <string name="auth_title">Authentication</string>
     <string name="verify_title">Verification</string>
     <string name="main_account_title">Main Account</string>
+    <string name="registration_title">Registration</string>
     <!-- Screen Title -->
 
     <!-- Input Labels -->
@@ -35,6 +36,7 @@
     <string name="lets_go_button_label">Let\'s go</string>
     <string name="nice_button_label">Nice</string>
     <string name="create_button_label">Create</string>
+    <string name="apply_button_label">Apply</string>
     <!-- Button Labels -->
 
     <!-- Errors -->
@@ -91,6 +93,11 @@
     <!-- Registration Account Finish -->
     <string name="registration_account_finish_title">You\'re set</string>
     <string name="registration_account_finish_text">It\'s time to take control\nof your CoinCorn</string>
-    <!-- Registration Account Intro -->
+    <!-- Registration Account Finish -->
+
+    <!-- Registration Name -->
+    <string name="registration_name_title">What can we call you?</string>
+    <string name="registration_name_text">Enter your name, nickname or whatever comes to Your mind</string>
+    <!-- Registration Name -->
 
 </resources>

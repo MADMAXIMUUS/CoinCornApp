@@ -6,5 +6,4 @@ data class AuthRequestModel(
     val os: String = "android",
     val email: String = "",
     @SerializedName("fcm_push_token") val fcmPushToken: String = "",
-    @SerializedName("vendor_id") val vendorId: String = ""
 )

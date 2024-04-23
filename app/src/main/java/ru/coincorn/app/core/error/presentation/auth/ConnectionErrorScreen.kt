@@ -81,7 +81,7 @@ private fun AuthErrorScreen(
             Spacer(modifier = Modifier.weight(1f))
             PersianPrimaryButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = stringResource(id = R.string.sign_in_button_label),
+                text = stringResource(id = R.string.send_code_label),
                 sizes = PersianButtonDefaults.largeSizes(),
                 onClick = onAuthClick
             )

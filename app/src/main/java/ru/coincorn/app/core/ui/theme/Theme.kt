@@ -34,17 +34,17 @@ private val DarkColorScheme = darkColorScheme(
     correctContainer = Color(0xFF005138),
     onCorrectContainer = Color(0xFF89F8C6),
     outline = Color(0xFF998D96),
-    background = Color(0xFF1E1A1D),
-    onBackground = Color(0xFFE9E0E4),
     surface = Color(0xFF161215),
     onSurface = Color(0xFFCCC4C8),
     surfaceVariant = Color(0xFF4D444B),
     onSurfaceVariant = Color(0xFFD0C3CC),
-    inverseSurface = Color(0xFFE9E0E4),
-    inverseOnSurface = Color(0xFF1E1A1D),
-    inversePrimary = Color(0xFF874589),
     surfaceTint = Color(0xFFFBACF8),
-    scrim = Color.Black
+    scrim = Color.Black,
+    surface1 = Color(0xFF211A20),
+    surface2 = Color(0xFF281E27),
+    surface3 = Color(0xFF2F232E),
+    surface4 = Color(0xFF312430),
+    surface5 = Color(0xFF362835)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -64,22 +64,22 @@ private val LightColorScheme = lightColorScheme(
     onError = Color.White,
     errorContainer = Color(0xFFFFDAD6),
     onErrorContainer = Color(0xFF410002),
-    correct = Color(0xFF006C4B),
-    onCorrect = Color.White,
-    correctContainer = Color(0xFF89F8C6),
-    onCorrectContainer = Color(0xFF002114),
+    valid = Color(0xFF006C4B),
+    onValid = Color.White,
+    validContainer = Color(0xFF89F8C6),
+    onValidContainer = Color(0xFF002114),
     outline = Color(0xFF7F747C),
-    background = Color(0xFFFFFBFF),
-    onBackground = Color(0xFF1E1A1D),
     surface = Color(0xFFFFF7FA),
     onSurface = Color(0xFF1E1A1D),
     surfaceVariant = Color(0xFFEDDEE8),
     onSurfaceVariant = Color(0xFF4D444B),
-    inverseSurface = Color(0xFF342F32),
-    inverseOnSurface = Color(0xFFF7EEF2),
-    inversePrimary = Color(0xFFFBACF8),
     surfaceTint = Color(0xFF874589),
-    scrim = Color.Black
+    scrim = Color.Black,
+    surface1 = Color(0xFFF9EEF4),
+    surface2 = Color(0xFFF5E9F1),
+    surface3 = Color(0xFFF2E3EE),
+    surface4 = Color(0xFFF1E2EC),
+    surface5 = Color(0xFFEEDEEA)
 )
 
 @Composable
@@ -95,10 +95,10 @@ fun CoinCornTheme(
         SideEffect {
             currentWindow.statusBarColor = Color.Transparent.toArgb()
             currentWindow.navigationBarColor = Color.Transparent.toArgb()
-            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightStatusBars =
-                !darkTheme
-            WindowCompat.getInsetsController(currentWindow, view).isAppearanceLightNavigationBars =
-                !darkTheme
+            WindowCompat.getInsetsController(currentWindow, view)
+                .isAppearanceLightStatusBars = !darkTheme
+            WindowCompat.getInsetsController(currentWindow, view)
+                .isAppearanceLightNavigationBars = !darkTheme
         }
     }
 

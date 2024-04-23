@@ -60,7 +60,7 @@ private fun RegistrationAccountFinishScreen(
                     .size(320.dp, 411.dp),
                 painter = painterResource(id = R.drawable.img_account_finish),
                 contentDescription = "",
-                tint = MaterialTheme.extendedColorScheme.correct
+                tint = MaterialTheme.extendedColorScheme.valid
             )
             Spacer(modifier = Modifier.weight(.5f))
             Text(

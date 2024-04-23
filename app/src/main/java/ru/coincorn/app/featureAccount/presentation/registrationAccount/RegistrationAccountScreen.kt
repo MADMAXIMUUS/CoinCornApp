@@ -34,7 +34,6 @@ import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.select.SelectActionItem
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBar
 import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarLeft
-import io.github.madmaximuus.persian.topAppBar.PersianTopAppBarMiddle
 import ru.coincorn.app.BuildConfig
 import ru.coincorn.app.R
 import ru.coincorn.app.core.ui.theme.CoinCornTheme
@@ -73,10 +72,7 @@ private fun RegistrationAccountScreen(
                     customIcon = painterResource(id = R.drawable.ic_arrow_back),
                     onClick = onBackClick
                 ),
-                middle = PersianTopAppBarMiddle.Title(
-                    text = stringResource(R.string.main_account_title)
-                ),
-                actionItemsCount = 0
+                title = stringResource(R.string.main_account_title),
             )
         },
     ) { padding ->
@@ -125,7 +121,7 @@ private fun RegistrationAccountScreen(
                     text = "",
                 ),
                 enabled = !state.isLoading,
-                isSuccess = state.amount.isNotEmpty()
+                isValid = state.amount.isNotEmpty()
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraExtraSmall))
             PersianForm(
@@ -180,7 +176,7 @@ private fun RegistrationAccountScreen(
                     .padding(horizontal = MaterialTheme.spacing.large),
                 text = stringResource(R.string.create_button_label),
                 onClick = onCreateClick,
-                sizes = PersianButtonDefaults.largeSizes(state.isLoading),
+                sizes = PersianButtonDefaults.largeSizes(),
                 loading = state.isLoading
             )
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.extraExtraLarge))

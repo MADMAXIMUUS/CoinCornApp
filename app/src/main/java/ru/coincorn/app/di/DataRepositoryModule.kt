@@ -10,6 +10,8 @@ import ru.coincorn.app.featureAuth.data.repository.AuthRepositoryImpl
 import ru.coincorn.app.featureAuth.data.repository.CredentialsRepositoryImpl
 import ru.coincorn.app.featureAuth.domain.repository.AuthRepository
 import ru.coincorn.app.featureAuth.domain.repository.CredentialsRepository
+import ru.coincorn.app.featureProfile.data.repository.UserRepositoryImpl
+import ru.coincorn.app.featureProfile.domain.repository.UserRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -29,5 +31,10 @@ interface DataRepositoryModule {
     fun bindAccountRepository(
         repositoryImpl: AccountRepositoryImpl
     ): AccountRepository
+
+    @Binds
+    fun bindUserRepository(
+        repositoryImpl: UserRepositoryImpl
+    ): UserRepository
 
 }

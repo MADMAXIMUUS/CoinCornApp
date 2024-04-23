@@ -9,6 +9,8 @@ import ru.coincorn.app.featureAccount.data.api.AccountApi
 import ru.coincorn.app.featureAccount.data.dataSource.AccountRemoteDataSource
 import ru.coincorn.app.featureAuth.data.api.AuthApi
 import ru.coincorn.app.featureAuth.data.dataSource.AuthRemoteDataSource
+import ru.coincorn.app.featureProfile.data.api.UserApi
+import ru.coincorn.app.featureProfile.data.dataSource.UserRemoteDataSource
 import javax.inject.Singleton
 
 @Module
@@ -39,9 +41,15 @@ internal object RemoteDataSourceModule {
         return AccountRemoteDataSource(accountApi)
     }
 
-    /*@Provides
+    @Provides
     @Singleton
-    fun provideUserApi(retrofit: Retrofit): UserRemoteDataSource {
-        return retrofit.create(UserRemoteDataSource::class.java)
-    }*/
+    fun provideUserApi(retrofit: Retrofit): UserApi {
+        return retrofit.create(UserApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRemoteDataSource(userApi: UserApi): UserRemoteDataSource {
+        return UserRemoteDataSource(userApi)
+    }
 }
