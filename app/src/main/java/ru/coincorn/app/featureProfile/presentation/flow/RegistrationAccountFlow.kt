@@ -9,7 +9,7 @@ import ru.coincorn.app.core.navigation.Destination
 import ru.coincorn.app.core.navigation.NavHost
 import ru.coincorn.app.core.navigation.NavigationEffects
 import ru.coincorn.app.core.navigation.composable
-import ru.coincorn.app.featureProfile.presentation.registrationAccount.RegistrationNameRoute
+import ru.coincorn.app.featureProfile.presentation.registrationName.RegistrationNameRoute
 
 @Composable
 fun RegistrationNameFlow(

@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureProfile.presentation.registrationAccount
+package ru.coincorn.app.featureProfile.presentation.registrationName
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -48,7 +48,7 @@ class RegistrationNameViewModel @Inject constructor(
             userRepository
                 .updateName(_uiState.value.name)
                 .collectLatest {
-                    nameNavigator.navigateTo(Destination.RegistrationAccountFlow)
+                    nameNavigator.newRootScreen(Destination.RegistrationAccountFlow)
                 }
             _uiState.update {currentState->
                 currentState.copy(

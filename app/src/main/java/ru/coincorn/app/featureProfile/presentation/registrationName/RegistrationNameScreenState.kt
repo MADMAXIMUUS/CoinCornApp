@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureProfile.presentation.registrationAccount
+package ru.coincorn.app.featureProfile.presentation.registrationName
 
 data class RegistrationNameScreenState(
     val name: String = "",

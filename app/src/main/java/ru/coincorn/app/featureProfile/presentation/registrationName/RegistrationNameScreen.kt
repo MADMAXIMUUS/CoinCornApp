@@ -1,4 +1,4 @@
-package ru.coincorn.app.featureProfile.presentation.registrationAccount
+package ru.coincorn.app.featureProfile.presentation.registrationName
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
