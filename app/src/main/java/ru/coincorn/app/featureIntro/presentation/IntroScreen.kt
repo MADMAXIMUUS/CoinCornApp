@@ -1,16 +1,13 @@
 package ru.coincorn.app.featureIntro.presentation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -31,6 +28,7 @@ import io.github.madmaximuus.persian.foundation.extendedColorScheme
 import io.github.madmaximuus.persian.foundation.spacing
 import io.github.madmaximuus.persian.pageIndicator.PersianPageIndicator
 import ru.coincorn.app.R
+import ru.coincorn.app.core.ui.components.GradientBackground
 
 @Composable
 fun IntroRoute(
@@ -66,46 +64,55 @@ private fun IntroScreen(
         onPageChange(pagerState.currentPage)
     }
 
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .systemBarsPadding(),
-        color = MaterialTheme.extendedColorScheme.surface
-    ) {
-        Box(
+    GradientBackground(
+        modifier = Modifier.fillMaxSize(),
+        gradientColors = listOf(
+            0f to MaterialTheme.extendedColorScheme.primaryContainer,
+            .5f to MaterialTheme.extendedColorScheme.primaryContainer,
+            .75f to MaterialTheme.extendedColorScheme.surface
+        ),
+    ){
+        Surface(
             modifier = Modifier
                 .fillMaxSize()
+                .systemBarsPadding(),
+            color = Color.Transparent
         ) {
-            HorizontalPager(
-                state = pagerState
-            ) { page ->
-                IntoPage(model = state.pages[page])
-            }
-            Row(
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = MaterialTheme.spacing.extraExtraLarge),
-                verticalAlignment = Alignment.CenterVertically
+                    .fillMaxSize()
             ) {
-                PersianTertiaryButton(
-                    modifier = Modifier.padding(start = MaterialTheme.spacing.large),
-                    text = stringResource(id = R.string.skip),
-                    sizes = PersianButtonDefaults.smallSizes(),
-                    onClick = onSkipClick,
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                PersianPageIndicator(
-                    modifier = Modifier.wrapContentWidth(),
-                    pagerState = pagerState
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                PersianTertiaryButton(
-                    modifier = Modifier.padding(end = MaterialTheme.spacing.large),
-                    text = stringResource(id = R.string.next),
-                    sizes = PersianButtonDefaults.smallSizes(),
-                    onClick = onNextClick
-                )
+                HorizontalPager(
+                    state = pagerState
+                ) { page ->
+                    IntoPage(model = state.pages[page])
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = MaterialTheme.spacing.extraExtraLarge),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    PersianTertiaryButton(
+                        modifier = Modifier.padding(start = MaterialTheme.spacing.large),
+                        text = stringResource(id = R.string.skip),
+                        sizes = PersianButtonDefaults.smallSizes(),
+                        onClick = onSkipClick,
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                    PersianPageIndicator(
+                        modifier = Modifier.wrapContentWidth(),
+                        pagerState = pagerState
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                    PersianTertiaryButton(
+                        modifier = Modifier.padding(end = MaterialTheme.spacing.large),
+                        text = stringResource(id = R.string.next),
+                        sizes = PersianButtonDefaults.smallSizes(),
+                        onClick = onNextClick
+                    )
+                }
             }
         }
     }
