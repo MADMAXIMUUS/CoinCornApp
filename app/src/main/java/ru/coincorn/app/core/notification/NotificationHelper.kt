@@ -25,7 +25,7 @@ class NotificationHelper @Inject constructor(
 
     fun showCommonNotification(messageBody: String, data: Map<String, String>) {
         val notificationBuilder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_notificaiton)
+            .setSmallIcon(R.drawable.ic_notification)
             .setColor(ContextCompat.getColor(context, R.color.primary))
             .setContentTitle(context.getString(R.string.app_name))
             .setContentText(messageBody)

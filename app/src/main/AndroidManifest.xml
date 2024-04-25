@@ -19,6 +19,14 @@
         android:theme="@style/Theme.Splash.CoinCorn"
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="34">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/primary" />
+
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
